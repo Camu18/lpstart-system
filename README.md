@@ -1,2 +1,262 @@
-# lpstart-system
-Original DOS-based data-driven UI system (PowerBASIC, 1996–1997)
+# LPSTART System (Original DOS Architecture)
+
+## 🧠 Core Idea
+
+> **Behavior emerges from data, not from predefined components**
+
+This system was originally developed in the **1996–1997 era** using PowerBASIC on DOS.
+
+Instead of using UI components like buttons or textboxes, the system is built on a **data-driven UI**:
+
+* UI is data
+* Interaction is interpreted
+* Behavior emerges from structure
+
+---
+
+## 🧩 System Overview
+
+LPSTART is the **entry point** of the system.
+
+```text
+LPSTART.exe
+   ↓
+LMENUE
+   ↓
+Choose Program
+   ↓
+p100
+   ↓
+Load paramet.dat
+   ↓
+Render UI
+   ↓
+lam.exe
+   ↓
+bestellung.pbc (Order Interface)
+```
+
+---
+
+## 🔷 Key Concepts
+
+### UI = Data
+
+* UI is stored in files (e.g., `paramet.dat`)
+* Runtime loads and renders dynamically
+* No hardcoded layout
+
+### No Components
+
+* No button objects
+* No textbox objects
+* Only regions with meaning
+
+### Interaction Model
+
+```text
+Click (x, y)
+   ↓
+Detect Region (n)
+   ↓
+Execute Action
+```
+
+### Dialog System
+
+```text
+g++ → open dialog
+g-- → close dialog
+```
+
+→ UI behaves like a **stack**
+
+---
+
+### Data Organization
+
+* Each region loads its own data file `m(n)`
+* No data mixing between modules
+
+Main groups:
+
+* Customer
+* Article
+* Order
+
+---
+
+### Behavior Model
+
+* Menu → navigation
+* Region → action trigger
+* Input fields → can trigger logic (e.g., search)
+
+---
+
+## ▶️ How to Run
+
+This system can be executed in **two modes**:
+
+---
+
+### 🧩 1. Design Mode (UI Exploration)
+
+Used to **observe how the interface is designed and rendered from data**.
+
+#### Required files:
+
+* `LPSTART.exe`
+* `p100.pbc`
+* `paramet.dat`
+
+#### Steps:
+
+1. Run `LPSTART.exe`
+2. In **LMENUE**, select:
+
+   ```
+   Programm
+   ```
+3. Choose:
+
+   ```
+   p100
+   ```
+4. The system will:
+
+   * Load `paramet.dat`
+   * Render the UI dynamically from data
+
+> Note: The **order interface starts at line 1000**
+
+**This mode demonstrates:**
+
+* Data-driven UI rendering
+* Separation of structure and behavior
+* No dependency on predefined components
+
+---
+
+### 🛒 2. User Mode (Operational Usage)
+
+Used for **real usage of the system (order processing)**.
+
+#### Required files:
+
+* `lam.exe`
+* All `*.pbc` files
+* All `*.dat` files
+
+#### Steps:
+
+* Run `lam.exe`
+* The system opens:
+
+  ```
+  bestellung.pbc
+  ```
+* This is the **order interface**
+
+**This mode demonstrates:**
+
+* Real-world workflow
+* Integrated data and behavior
+* Seamless navigation
+
+---
+
+## 🔍 About "Line 1000"
+
+In this system, the main data file `paramet.dat` contains **many interfaces, menus, and configuration parameters**.
+
+* **Lines < 1000** → system logic and shared configuration
+* **Lines ≥ 1000** → the **order interface** (`bestellung`)
+
+> Line 1000 marks the boundary between the **core system** and the **application layer** for orders.
+> Other interfaces and menus occupy different regions in the same file.
+
+**Notes:**
+
+* Even though `paramet.dat` contains multiple interfaces, **bestellung starts at line 1000**.
+* The system dynamically reads the file and renders the interface according to the data.
+* This demonstrates **data-driven UI**, where layout and behavior emerge from the file content rather than hardcoded components.
+
+---
+
+## 🌍 Language Note
+
+* The original code was developed in **München, Germany**, using **German** for variable names and comments.
+* All language strings and labels can be **adapted to other languages** dynamically.
+
+---
+
+## ⚠️ Notes
+
+Some modules are missing:
+
+* `p100`
+* `mread`
+
+However, the repository still demonstrates:
+
+* Architecture
+* Data-driven UI concept
+* System design philosophy
+
+---
+
+## 🔗 Modern Version
+
+A modern implementation of this idea is available here:
+
+👉 https://github.com/yourname/p100fx
+
+---
+
+## 🧭 Philosophy
+
+This project does **not** define a strict way to build software.
+
+It proposes a way of thinking:
+
+* UI is data
+* Logic emerges from structure
+* Interaction is interpreted
+
+**Each developer can:**
+
+* Implement differently
+* Extend freely
+* Adapt to their own system
+
+---
+
+## 🎯 Goal
+
+This repository exists to:
+
+> Preserve and share a system design philosophy ahead of its time
+
+---
+
+# ✅ Summary Table
+
+| Mode        | Purpose                   | Entry Point |
+| ----------- | ------------------------- | ----------- |
+| Design Mode | Explore UI & architecture | LPSTART.exe |
+| User Mode   | Use the system (orders)   | lam.exe     |
+
+---
+
+# 🔥 Final Note
+
+This README now clearly shows:
+
+* System philosophy
+* How to run in both modes
+* Why **line 1000** is important
+* Original language context (München/German)
+
+It’s ready to **post directly to GitHub**.
+
