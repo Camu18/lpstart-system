@@ -21,11 +21,11 @@ LPSTART is the **entry point** of the system.
 ```text
 LPSTART.exe
    ↓
-LMENUE
+LPMENUE -  START PROGRAMM 
    ↓
-Choose Program
+FILECONTROL
    ↓
-p100
+ WINDOWS       p100
    ↓
 Load paramet.dat
    ↓
@@ -65,8 +65,8 @@ Execute Action
 ### Dialog System
 
 ```text
-g++ → open dialog
-g-- → close dialog
+lps% ++ → open dialog
+lps% -- → close dialog
 ```
 
 → UI behaves like a **stack**
@@ -107,21 +107,23 @@ Used to **observe how the interface is designed and rendered from data**.
 #### Required files:
 
 * `LPSTART.exe`
+*  Lpmenue.pbc
 * `p100.pbc`
 * `paramet.dat`
 
 #### Steps:
 
 1. Run `LPSTART.exe`
-2. In **LMENUE**, select:
+2. In **LPMENUE - START PROGRAMM **, select:
 
    ```
-   Programm
+   FILECONTROL
+
    ```
 3. Choose:
 
    ```
-   p100
+   WINDOWS       p100
    ```
 4. The system will:
 
@@ -154,7 +156,7 @@ Used for **real usage of the system (order processing)**.
 * The system opens:
 
   ```
-  bestellung.pbc
+  bestel.pbc
   ```
 * This is the **order interface**
 
@@ -195,8 +197,9 @@ In this system, the main data file `paramet.dat` contains **many interfaces, men
 
 Some modules are missing:
 
-* `p100`
-* `mread`
+* `p100.bas
+* `mreadh.bas
+*  mwnd.bas
 
 However, the repository still demonstrates:
 
@@ -210,7 +213,7 @@ However, the repository still demonstrates:
 
 A modern implementation of this idea is available here:
 
-👉 https://github.com/yourname/p100fx
+👉 https://github.com/Camu18/p100fx--p101fx
 
 ---
 
